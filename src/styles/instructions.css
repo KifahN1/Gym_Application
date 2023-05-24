@@ -1,0 +1,11 @@
+.instructions {
+  color: rgb(148, 148, 156) !important;
+  font-size: large !important;
+  margin: auto !important;
+  width: 75vw !important;
+}
+
+.centralized {
+  width: 100vw !important;
+  display: flex !important;
+}
