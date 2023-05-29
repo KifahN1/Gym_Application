@@ -3,7 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { removeExercise } from "../store/store";
+import { removeExercise, removeAllExercises } from "../store/store";
 
 function GenericTable() {
 	const dispatch = useDispatch();
@@ -17,9 +17,9 @@ function GenericTable() {
 		return (
 			<Button
 				type="button"
-				style={{ fontSize: "2rem" }}
+				style={{ fontSize: "2rem", color: "red" }} // Set the color to red
 				icon={icon}
-				className="p-button-sm p-button-text"
+				className="p-button-sm p-button-text p-button-danger" // Add p-button-danger class for red color
 				onClick={() => handleDelete(rowData)}
 			/>
 		);
@@ -28,6 +28,11 @@ function GenericTable() {
 	const handleDelete = (rowData: string) => {
 		console.log("Exercise to delete ", rowData);
 		dispatch(removeExercise(rowData));
+	};
+
+	const handleDeleteAll = () => {
+		console.log("Deleting all exercises");
+		dispatch(removeAllExercises());
 	};
 
 	const cols = [
@@ -81,13 +86,20 @@ function GenericTable() {
 			});
 		});
 	};
-
 	const header = (
-		<div className="flex align-items-center justify-content-end gap-2">
+		<div className="flex align-items-center justify-content-end">
+			<Button
+				type="button"
+				icon="pi pi-trash"
+				severity="danger"
+				onClick={handleDeleteAll}
+				data-pr-tooltip="Delete All"
+			/>
+			<span style={{ marginRight: "16px" }}></span> {/* Add a spacer */}
 			<Button
 				type="button"
 				icon="pi pi-file-pdf"
-				severity="danger"
+				style={{ backgroundColor: "#4169e1" }}
 				onClick={exportPdf}
 				data-pr-tooltip="PDF"
 			/>
@@ -161,3 +173,25 @@ export default GenericTable;
 		});
 	};
 	*/
+
+// const header = (
+// 	<div className="flex align-items-center justify-content-end">
+// 		<div className="flex gap-2">
+// 			<Button
+// 				type="button"
+// 				icon="pi pi-file-pdf"
+// 				severity="danger"
+// 				onClick={exportPdf}
+// 				data-pr-tooltip="PDF"
+// 			/>
+// 			<div style={{ height: "16px" }} /> {/* Add vertical space */}
+// 			<Button
+// 				type="button"
+// 				icon="pi pi-trash"
+// 				severity="danger"
+// 				onClick={handleDeleteAll}
+// 				data-pr-tooltip="Delete All"
+// 			/>
+// 		</div>
+// 	</div>
+// );

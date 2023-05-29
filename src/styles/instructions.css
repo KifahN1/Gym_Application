@@ -1,11 +1,25 @@
 .instructions {
-  color: rgb(148, 148, 156) !important;
-  font-size: large !important;
-  margin: auto !important;
-  width: 75vw !important;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+	margin: auto;
+	width: 75vw;
+}
+
+.instructions li {
+	list-style-type: none;
+	position: relative;
+}
+
+.instructions li:before {
+	content: "•";
+	color: red;
+	margin-right: 8px;
+	position: absolute;
+	left: -15px;
 }
 
 .centralized {
-  width: 100vw !important;
-  display: flex !important;
+	width: 100vw !important;
+	display: flex !important;
 }
