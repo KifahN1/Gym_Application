@@ -1,7 +1,7 @@
 .instructions {
 	color: inherit;
 	font-size: inherit;
-	font-family: inherit;
+	font-family: "Arial", sans-serif !important; /* Change the font family here */
 	margin: auto;
 	width: 75vw;
 }
@@ -9,6 +9,7 @@
 .instructions li {
 	list-style-type: none;
 	position: relative;
+	margin-bottom: 20px; /* Add margin bottom to create space between each instruction */
 }
 
 .instructions li:before {

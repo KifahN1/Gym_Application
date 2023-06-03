@@ -51,6 +51,20 @@ export default function GenericDropdown({ placeHolder, exercises }: Props) {
 		dispatch(addExercise(value));
 	};
 
+	const customItemTemplate = (option: any) => {
+		if (option.disabled) {
+			// Category styling
+			return (
+				<div className="category-option">
+					<strong>{option.name}</strong>
+				</div>
+			);
+		} else {
+			// Exercise styling
+			return <div>{option.name}</div>;
+		}
+	};
+
 	return (
 		<div
 			className="card flex justify-content-center align-items-center gap-4"
@@ -72,6 +86,7 @@ export default function GenericDropdown({ placeHolder, exercises }: Props) {
 				}
 				className="w-full m-4"
 				style={{ width: "150px" }}
+				itemTemplate={customItemTemplate}
 			/>
 		</div>
 	);

@@ -8,7 +8,28 @@ interface ExerciseState {
 const exerciseSlice = createSlice({
 	name: "selectedExercises",
 	initialState: {
-		data: [],
+		data: [
+			{
+				name: "Reverse Curl",
+				muscleGroup: "Biceps",
+				sets: "12-10-8",
+			},
+			{
+				name: "Wide-Grip Curl",
+				muscleGroup: "Biceps",
+				sets: "10-10-10-10",
+			},
+			{
+				name: "Conventional Barbell Curl",
+				muscleGroup: "Biceps",
+				sets: "12-10-8",
+			},
+			{
+				name: "Dumbbell Curl",
+				muscleGroup: "Biceps",
+				sets: "12-10-8",
+			},
+		],
 	} as ExerciseState,
 	reducers: {
 		addExercise: (state, action) => {

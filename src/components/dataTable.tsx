@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
-import { removeExercise, removeAllExercises } from "../store/store";
+import {
+	removeExercise,
+	removeAllExercises,
+	addExercise,
+} from "../store/store";
 
 function GenericTable() {
 	const dispatch = useDispatch();
@@ -11,23 +15,23 @@ function GenericTable() {
 		(state: any) => state.exerciseReducer.data
 	);
 
-	const actionTemplate = (rowData: string) => {
+	const actionTemplate = (rowData: any) => {
 		const icon = "pi pi-trash";
+
+		const handleDelete = () => {
+			console.log("Exercise to delete ", rowData);
+			dispatch(removeExercise(rowData));
+		};
 
 		return (
 			<Button
 				type="button"
-				style={{ fontSize: "2rem", color: "red" }} // Set the color to red
+				style={{ fontSize: "2rem", color: "red" }}
 				icon={icon}
-				className="p-button-sm p-button-text p-button-danger" // Add p-button-danger class for red color
-				onClick={() => handleDelete(rowData)}
+				className="p-button-sm p-button-text p-button-danger"
+				onClick={handleDelete}
 			/>
 		);
-	};
-
-	const handleDelete = (rowData: string) => {
-		console.log("Exercise to delete ", rowData);
-		dispatch(removeExercise(rowData));
 	};
 
 	const handleDeleteAll = () => {
@@ -45,6 +49,7 @@ function GenericTable() {
 		title: col.header,
 		dataKey: col.field,
 	}));
+
 	const exportPdf = () => {
 		import("jspdf").then((jsPDF: any) => {
 			import("jspdf-autotable").then(() => {
@@ -59,6 +64,7 @@ function GenericTable() {
 					doc.internal.pageSize.getHeight(),
 					"F"
 				);
+
 				const tableConfig = {
 					styles: {
 						font: "helvetica",
@@ -129,7 +135,6 @@ function GenericTable() {
 }
 
 export default GenericTable;
-
 /*const exportPdf = () => {
 		import("jspdf").then((jsPDF: any) => {
 			import("jspdf-autotable").then(() => {

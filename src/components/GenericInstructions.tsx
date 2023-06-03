@@ -3,7 +3,7 @@ import "../styles/instructions.css";
 export const GenericInstructions = () => {
 	return (
 		<div className="centralized">
-			<ul className="pi instructions">
+			<ul className="pi instructions ">
 				<li>
 					Warm up: Before beginning your gym workout, it's important to properly
 					warm up your body to prevent injury. A good warm-up should include
@@ -27,11 +27,6 @@ export const GenericInstructions = () => {
 					for assistance. Start with lighter weights and gradually increase the
 					weight as your form improves.
 				</li>
-				Breathe properly: Proper breathing technique can help you lift heavier
-				weights and perform more reps. In general, you should inhale before
-				starting the exercise and exhale during the effort (when lifting or
-				pushing the weight) and inhale during the recovery (when lowering or
-				releasing the weight).
 			</ul>
 		</div>
 	);
