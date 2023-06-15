@@ -4,15 +4,21 @@
 
 .p-dropdown-panel {
 	width: 150px !important;
-	background-color: red;
+	background-color: white;
 }
+
 /* Update the custom category styles */
 .custom-category {
 	font-weight: bold;
-	color: red;
+	color: white;
 }
 
 /* Update the dropdown item styles */
 .p-dropdown-item {
 	color: blue;
+}
+.p-dropdown {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

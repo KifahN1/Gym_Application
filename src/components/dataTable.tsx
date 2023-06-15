@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	removeExercise,
@@ -14,6 +15,42 @@ function GenericTable() {
 	const selectedExercises = useSelector(
 		(state: any) => state.exerciseReducer.data
 	);
+
+	useEffect(() => {
+		const initialExercises = [
+			{
+				peak: [
+					{
+						name: "Reverse Curl",
+						muscleGroup: "Biceps",
+						sets: "12-10-8",
+					},
+					{
+						name: "Wide-Grip Curl",
+						muscleGroup: "Biceps",
+						sets: "10-10-10-10",
+					},
+				],
+			},
+			{
+				width: [
+					{
+						name: "Conventional Barbell Curl",
+						muscleGroup: "Biceps",
+						sets: "12-10-8",
+					},
+					{
+						name: "Dumbbell Curl",
+						muscleGroup: "Biceps",
+						sets: "12-10-8",
+					},
+				],
+			},
+		];
+
+		// Add initial exercises to selectedExercises state
+		dispatch(addExercise(initialExercises));
+	}, [dispatch]);
 
 	const actionTemplate = (rowData: any) => {
 		const icon = "pi pi-trash";
@@ -76,7 +113,7 @@ function GenericTable() {
 						rowHeight: 50, // Increase the row height as desired
 					},
 					headerStyles: {
-						fillColor: [52, 73, 94], // Dark blue background color for the header
+						fillColor: [52, 73, 94], //
 						textColor: [255, 255, 255], // White text color for the header
 					},
 					alternateRowStyles: {
@@ -92,6 +129,7 @@ function GenericTable() {
 			});
 		});
 	};
+
 	const header = (
 		<div className="flex align-items-center justify-content-end">
 			<Button
@@ -135,6 +173,7 @@ function GenericTable() {
 }
 
 export default GenericTable;
+
 /*const exportPdf = () => {
 		import("jspdf").then((jsPDF: any) => {
 			import("jspdf-autotable").then(() => {

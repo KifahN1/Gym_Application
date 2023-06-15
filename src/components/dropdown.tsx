@@ -67,11 +67,12 @@ export default function GenericDropdown({ placeHolder, exercises }: Props) {
 
 	return (
 		<div
-			className="card flex justify-content-center align-items-center gap-4"
+			className="flex justify-content-center align-items-center gap-4"
 			style={{
 				marginLeft: "20vw",
 				margin: "15px 15px",
-				display: "inline-Block",
+				display: "flex",
+				justifyContent: "center", // Center the dropdown horizontally
 			}}>
 			<Dropdown
 				value={selectedExercises}
